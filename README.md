@@ -90,18 +90,40 @@ forge one → `M 6.7 — 38 km NE of Tambo, Peru`.
 
 Full call-by-call reproduction, including ids, in [AGENTS.md](./AGENTS.md).
 
+## As a product
+
+The loop above is the capability. The product is **the embedded long-tail integration
+layer for SaaS AI assistants** — a vendor ships an assistant, their customers ask it to
+connect to systems the vendor has never heard of, and the tail gets forged on demand per
+tenant.
+
+Two things from [PRODUCT.md](./PRODUCT.md) worth stating here, because they invert the
+prototype:
+
+- **The product default is propose, not run.** An agent that silently invents tools and
+  fires them at live APIs is unsellable. Read-only tools auto-promote; anything that
+  writes stops and asks. The demo optimizes for autonomy, the product for trust.
+- **Auth bounds the tail.** Key-based auth is forgeable — the customer supplies their own
+  credential via a connect link. OAuth is *not*, because it needs per-provider client
+  registration that no agent can do. The claim is "any API your customer can hand us a
+  key for," which is still most of long-tail B2B software.
+
 ## Status
 
 - [x] Authorize Fastn Workspace
 - [x] Baseline connector inventory (424 registered; genuine gaps identified)
 - [x] Forge a connector by hand end to end, recording every failure
-- [ ] Wrap the loop as an agent that does it unattended
-- [ ] Pre-vet the tier-2 shortlist
-- [ ] Capability counter + demo UI
-- [ ] Rehearse twice end to end
+- [x] Product definition and shape
+- [ ] **Phase 0** — prove multi-tenant forging (forge under tenant A, verify isolation
+      from B, promote, verify B gains it)
+- [ ] **Phase 1** — gap ledger aggregated across tenants
+- [ ] **Phase 2** — promotion ladder + vendor review queue
+- [ ] **Phase 3** — customer-facing connect surface
 
 ## Docs
 
+- [PRODUCT.md](./PRODUCT.md) — personas, the promotion ladder, the auth constraint,
+  registry hygiene, build order
 - [AGENTS.md](./AGENTS.md) — architecture, forge loop, verified reference calls, all
-  ten gotchas, demo tiers
+  ten gotchas
 - [CLAUDE.md](./CLAUDE.md) — Claude Code specifics
